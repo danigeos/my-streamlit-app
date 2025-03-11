@@ -77,14 +77,14 @@ for frame in range(steps):
     ax.set_title(f'Time: {time_years/1e3:.2f} ky, Step: {frame+1}/{steps}')
     
     # Add contours for specific temperatures
-contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
-contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
-ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
-ax.clabel(contour_100, fmt='T=100', colors='green', fontsize=10)
+    contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
+    contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
+    ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
+    ax.clabel(contour_100, fmt='T=100', colors='green', fontsize=10)
 
-    plot_placeholder.pyplot(fig)
-    plt.close(fig)
-    time.sleep(0.1)  # Adjust for animation speed
+        plot_placeholder.pyplot(fig)
+        plt.close(fig)
+        time.sleep(0.1)  # Adjust for animation speed
 
 # Final plot with contours
 fig, ax = plt.subplots()
@@ -98,15 +98,15 @@ ax.set_ylabel('Depth (km)')
 ax.set_title(f'Final Temperature Distribution\nTime: {time_years/1e3:.2f} ky, Steps: {steps}')
 
 # Add contours for specific temperatures
-    contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
-    contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
-    ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
+        contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
+        contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
+        ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
 
 # Add contours for specific temperatures
-    contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
-    contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
-    ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
-    ax.clabel(contour_100, fmt='T=100', colors='green', fontsize=10)
+        contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
+        contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
+        ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
+        ax.clabel(contour_100, fmt='T=100', colors='green', fontsize=10)
 
 plot_placeholder.pyplot(fig)
 plt.close(fig)
