@@ -51,6 +51,11 @@ temperature[x_start:x_end, y_start:y_end] = T_hot  # Set hot region
 # Ensure top boundary remains at T_surface
 temperature[:, 0] = T_surface
 
+# Define meshgrid for plotting
+X = np.linspace(-4, 4, size_x)
+Y = np.linspace(-8, 0, size_y)
+X, Y = np.meshgrid(X, Y)
+
 # Streamlit progress bar
 progress_bar = st.progress(0)
 plot_placeholder = st.empty()
@@ -82,31 +87,7 @@ for frame in range(steps):
     ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
     ax.clabel(contour_100, fmt='T=100', colors='green', fontsize=10)
 
-        plot_placeholder.pyplot(fig)
-        plt.close(fig)
-        time.sleep(0.1)  # Adjust for animation speed
+    plot_placeholder.pyplot(fig)
+    plt.close(fig)
+    time.sleep(0.1)  # Adjust for animation speed
 
-# Final plot with contours
-fig, ax = plt.subplots()
-X = np.linspace(-4, 4, size_x)
-Y = np.linspace(-8, 0, size_y)
-X, Y = np.meshgrid(X, Y)
-im = ax.imshow(temperature.T, cmap='hot', origin='upper', extent=[-4, 4, -8, 0], vmin=-70, vmax=10)
-cbar = plt.colorbar(im, ax=ax, label='Temperature (°C)')
-ax.set_xlabel('X (km)')
-ax.set_ylabel('Depth (km)')
-ax.set_title(f'Final Temperature Distribution\nTime: {time_years/1e3:.2f} ky, Steps: {steps}')
-
-# Add contours for specific temperatures
-        contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
-        contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
-        ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
-
-# Add contours for specific temperatures
-        contour_0 = ax.contour(X, Y[::-1], temperature.T, levels=[0], colors='blue', linewidths=2)
-        contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green', linewidths=2)
-        ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
-        ax.clabel(contour_100, fmt='T=100', colors='green', fontsize=10)
-
-plot_placeholder.pyplot(fig)
-plt.close(fig)
