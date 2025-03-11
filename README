@@ -2,4 +2,6 @@ Thermal diffusion model for Mars volcanism thermal effects
 
 #Usable at: https://thermalevol.streamlit.app
 #Update with:
-#git commit -a -m "commit"; git push https://danigeos:<token>@github.com/danigeos/my-streamlit-app.git
+#git commit -a -m "commit"; git push https://danigeos:<token>@github.com/danigeos/thermal-2D-diffusion-streamlit-app.git
+
+Mostly developed here: https://chatgpt.com/share/67d04aa4-c570-8003-81c6-d8f51a83358f
