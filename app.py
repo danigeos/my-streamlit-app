@@ -84,7 +84,7 @@ if run_simulation:
         # Update plot
         fig, ax = plt.subplots()
         im = ax.imshow(temperature.T, cmap='hot', origin='upper', extent=[-domain_size_x_km/2, domain_size_x_km/2, -domain_size_y_km, 0], vmin=-65, vmax=110)
-        cbar = plt.colorbar(im, ax=ax, label='Temperature (°C)')
+        cbar = plt.colorbar(im, ax=ax, label='Temperature (°C)', orientation='vertical', aspect=40)
         ax.set_xlabel('X (km)')
         ax.set_ylabel('Depth (km)')
         time_years = sum(dt_initial * (1 + 0.01 * i) for i in range(frame + 1)) / 86400 / 365.24  # Convert time to years
