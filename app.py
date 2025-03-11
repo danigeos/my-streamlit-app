@@ -1,6 +1,5 @@
 #push with 
 #git push https://danigeos:<token>@github.com/danigeos/my-streamlit-app.git
-
 import numpy as np
 import matplotlib.pyplot as plt
 
