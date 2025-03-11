@@ -1,5 +1,6 @@
 #push with 
 #git push https://danigeos:<token>@github.com/danigeos/my-streamlit-app.git
+import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -53,8 +54,9 @@ temperature[x_start:x_end, y_start:y_end] = T_hot  # Set hot region
 temperature[:, 0] = T_surface
 
 # Time stepping loop
+progress_bar = st.progress(0)
 for frame in range(steps):
-    print(f"Running step: {frame+1}/{steps}")  # Console output to verify progress
+    progress_bar.progress((frame+1) / steps)
     new_temperature = temperature.copy()
 
     for i in range(1, size_x - 1):
@@ -81,4 +83,6 @@ contour_100 = ax.contour(X, Y[::-1], temperature.T, levels=[100], colors='green'
 ax.clabel(contour_0, fmt='T=0', colors='blue', fontsize=10)
 #ax.clabel(contour_100, fmt='T=100', colors='green', fontsize=10)
 
-plt.show()
+#plt.show()
+st.pyplot(fig)
+
