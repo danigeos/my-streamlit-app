@@ -5,18 +5,19 @@ import time
 
 # Streamlit sidebar controls
 st.sidebar.header("Simulation Parameters")
-domain_size_x_km = st.sidebar.number_input("Domain Width (km)", min_value=4, max_value=16, value=8, step=1)
-domain_size_y_km = st.sidebar.number_input("Domain Depth (km)", min_value=4, max_value=16, value=8, step=1)
-vertical_body_width_km = st.sidebar.number_input("Vertical Body Width (km)", min_value=0.05, max_value=0.5, value=0.1, step=0.05)
-horizontal_body_length_km = st.sidebar.number_input("Horizontal Body Length (km)", min_value=1, max_value=4, value=2, step=1)
-horizontal_body_depth_km = st.sidebar.number_input("Horizontal Body Depth (km)", min_value=0.1, max_value=2.0, value=0.5, step=0.1)
+domain_size_x_km = st.sidebar.number_input("Domain width (km)", min_value=4, max_value=16, value=8, step=1)
+domain_size_y_km = st.sidebar.number_input("Domain depth (km)", min_value=4, max_value=16, value=8, step=1)
+vertical_body_width_km = st.sidebar.number_input("Vertical body width (km)", min_value=0.05, max_value=0.5, value=0.1, step=0.05)
+horizontal_body_length_km = st.sidebar.number_input("Horizontal body length (km)", min_value=1, max_value=4, value=2, step=1)
+horizontal_body_depth_km = st.sidebar.number_input("Horizontal body width (km)", min_value=0.1, max_value=2.0, value=0.5, step=0.1)
 
 # Temperature settings
-T_hot = st.sidebar.number_input("Hot Body Temperature (°C)", min_value=500, max_value=1500, value=1300, step=50)
+T_hot = st.sidebar.number_input("Bodies' Temperature (°C)", min_value=500, max_value=1500, value=1300, step=50)
 T_surface = st.sidebar.number_input("Surface Temperature (°C)", min_value=-100, max_value=0, value=-63, step=5)
+Tgradient = st.sidebar.number_input("Temperature gradient (°C/km)", min_value=1, max_value=100, value=10, step=5)
 
 # Simulation settings
-steps = st.sidebar.number_input("Number of Time Steps", min_value=1, max_value=4000, value=200, step=50)
+steps = st.sidebar.number_input("Number of time steps", min_value=1, max_value=4000, value=200, step=50)
 
 
 # Streamlit setup
@@ -39,7 +40,7 @@ temperature = np.zeros((size_x, size_y))
 # Set temperature gradient vertically (10°C per km)
 depth = np.linspace(0, domain_size_y_km, size_y)
 for j in range(size_y):
-    temperature[:, j] = T_surface + 10 * depth[j]
+    temperature[:, j] = T_surface + Tgradient * depth[j]
 
 # Central vertical rectangle
 x_center = size_x // 2
